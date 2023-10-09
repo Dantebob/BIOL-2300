@@ -21,26 +21,28 @@ def get_compliment(gene):
         compliment_gene += compliment_dict[nuc]
     return (vertical_lines, compliment_gene)
 
-def print_replication(gene):
+def get_replication(gene):
     gene = gene.upper()
     (vertical_lines, compliment_gene) = get_compliment(gene)
-    print(" " * (len(gene) + 2), gene)
-    print(" " * len(gene), "/", vertical_lines)
-    print(gene, " ", compliment_gene)
-    print(vertical_lines)
-    print(compliment_gene, " ", gene)
-    print(" " * len(gene), "\\", vertical_lines)
-    print(" " * (len(gene) + 2), compliment_gene)
-
+    spaces = " " * len(gene)
+    replication = (
+       f"{spaces} {gene}\n"
+       f"{spaces}/{vertical_lines}\n"
+       f"{gene} {compliment_gene}\n"
+       f"{vertical_lines}\n"
+       f"{compliment_gene} {gene}\n"
+       f"{spaces}\{vertical_lines}\n"
+       f"{spaces} {compliment_gene}")
+    return replication
 
 if __name__ == '__main__':
     transcribed_gene = transcribe_gene(gene)
     # Printing
-    print("Transcription---------")
-    print(gene + "-->" + transcribed_gene)
-    (vertical_lines, compliment_gene) = get_compliment(gene)
-    print(vertical_lines)
-    print(compliment_gene)
-    print()
+#    print("Transcription---------")
+#    print(gene + "-->" + transcribed_gene)
+#    (vertical_lines, compliment_gene) = get_compliment(gene)
+#    print(vertical_lines)
+#    print(compliment_gene)
+#    print()
     print("Replication-----------")
-    print_replication(gene)
+    print(get_replication(gene))
