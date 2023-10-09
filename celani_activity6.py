@@ -1,25 +1,30 @@
 #! /usr/bin python3
 
-from Bio.Seq import Seq
-gene_name = input("Enter the gene name: ")
-gene_func = input("Enther the gene function: ")
-str_gene = input("Enter the gene nucleotide sequence: ")
+gene = input("Input gene sequence? ").upper()
 
-gene_seq = Seq(str_gene)
-transcript = gene_seq.transcribe() 
-aa_seq = transcript.translate()
+def transcribe_gene(gene):
+    gene = gene.upper()
+    transcribed_gene = ""
+    for nuc in gene:
+        if nuc == "T":
+            transcribed_gene += "U"
+        else:
+            transcribed_gene += nuc
+    return transcribed_gene
 
-#number of base pairs, nucleotides, and amino acids.
-bp_num = len(gene_seq)
-nt_num = bp_num*2
-aa_num = len(aa_seq)
+def print_compliment(gene):
+    compliment_dict={"A":"T", "C":"G", "G":"C", "T":"A"}
+    gene = gene.upper()
+    compliment_gene = ""
+    vertical_lines = ""
+    for nuc in gene:
+        vertical_lines += "|"
+        compliment_gene += compliment_dict[nuc]
+    print(vertical_lines)
+    print(compliment_gene)
 
-#display info to user
-print("Gene name: " + gene_name)
-print("Gene function: " + gene_func)
-print("Gene sequence: " + gene_seq)
-print("Gene length (bp): " + str(bp_num))
-print("Gene length (nt): " + str(nt_num))
-print("Amino acid sequence: " + aa_seq)
-print("Amino acid sequence length: " + str(aa_num))
-
+if __name__ == '__main__':
+    transcribed_gene = transcribe_gene(gene)
+    # Printing
+    print(gene + "-->" + transcribed_gene)
+    print_compliment(gene)
