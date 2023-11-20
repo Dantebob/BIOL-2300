@@ -36,13 +36,14 @@ def get_replication(gene):
     return replication
 
 if __name__ == '__main__':
-    transcribed_gene = transcribe_gene(gene)
     # Printing
-#    print("Transcription---------")
-#    print(gene + "-->" + transcribed_gene)
-#    (vertical_lines, compliment_gene) = get_compliment(gene)
-#    print(vertical_lines)
-#    print(compliment_gene)
-#    print()
     print("Replication-----------")
     print(get_replication(gene))
+    print()
+    print("Transcription---------")
+    transcribed_gene = transcribe_gene(gene)
+    print(gene + "-->" + transcribed_gene)
+    (vertical_lines, compliment_gene) = get_compliment(gene)
+    print(vertical_lines)
+    print(compliment_gene)
+
